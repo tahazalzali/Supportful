@@ -4,6 +4,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { LessonModule } from './lesson/lesson.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Lesson } from './lesson/lesson.entity';
+import { Student } from './student/student.entity';
+import { StudentModule } from './student/student.module';
 import "reflect-metadata"
 
 @Module({
@@ -14,7 +16,7 @@ import "reflect-metadata"
       synchronize:true,
       useUnifiedTopology:true,
       entities:[
-        Lesson
+        Lesson, Student
       ]
     
     })
@@ -23,6 +25,7 @@ import "reflect-metadata"
       driver:ApolloDriver
     }),
     LessonModule,
+    StudentModule,
   ],
 })
 export class AppModule {}
